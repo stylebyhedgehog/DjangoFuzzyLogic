@@ -1,0 +1,18 @@
+
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Result</title>
+</head>
+<body>
+
+{% for name, img_src in results.items %}
+    <p>{{name}}</p>
+    <img src="{% static img_src %}" alt="">
+{% endfor %}
+
+<a href="{%url 'main'%}">Назад</a>
+</body>
+</html>
