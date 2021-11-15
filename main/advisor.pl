@@ -8,11 +8,11 @@ has_cost(macerati_granTurismo,240000).
 has_cost(ford_mustang,60000).
 has_cost(volkswagen_passat,10000).
 has_cost(renault_kangoo,9900).
-has_cost(mini_cooper,14900).
+has_cost(mini_cooper,1600).
 has_cost(jeep_grand_cherokee,27700).
 has_cost(mercedes_sprinter,86000).
 has_cost(renault_master,24000).
-has_cost(oper_vectra,14200).
+has_cost(opel_vectra,14200).
 has_cost(nissan_note,21500).
 has_cost(hammer_h3,61500).
 has_cost(maybach_57S,499999).
@@ -133,7 +133,7 @@ is_type(fiat_126p,hatchback).
 is_type(macerati_granTurismo,coupe).
 is_type(ford_mustang,coupe).
 is_type(volkswagen_passat,sedan).
-is_type(renault_kangoo,pick_up).
+is_type(renault_kangoo,pickup).
 is_type(mini_cooper,hatchback).
 is_type(jeep_grand_cheerokee,suv).
 is_type(mercedes_sprinter,minibus).
@@ -157,16 +157,16 @@ has_name(fiat_125p,"Maluch (fiat 125p)").
 
 is_car_cheap(Car) :-
 	has_cost(Car, X),
-	X < 2000.
+	X < 7000.
 
 is_car_medium_prices(Car) :-
 	has_cost(Car, X),
-	X >= 2000,
-	X =< 10000.
+	X >= 7000,
+	X =< 20000.
 
 is_car_expensive(Car) :-
 	has_cost(Car, X),
-	X > 10000.
+	X > 20000.
 
 is_car_slow(Car) :-
 	has_power(Car, X),
@@ -183,16 +183,16 @@ is_car_fast(Car) :-
 
 is_car_old(Car) :-
 	year_of_production(Car, X),
-	X =< 1990.
+	X =< 2000.
 
 is_car_has_mid_age(Car) :-
 	year_of_production(Car, X),
-	X > 1990,
-	X < 2005.
+	X > 2000,
+	X < 2006.
 
 is_car_new(Car) :-
 	year_of_production(Car, X),
-	X >= 2005.
+	X >= 2006.
 
 has_engine_low_displacement(Car) :-
 	engine_displacement(Car, X),
@@ -200,8 +200,8 @@ has_engine_low_displacement(Car) :-
 
 has_engine_mid_displacement(Car) :-
 	engine_displacement(Car, X),
-	X >= 2000,
-	X =< 4000.
+	X >= 1500,
+	X =< 4500.
 
 has_engine_high_displacement(Car) :-
 	engine_displacement(Car, X),
@@ -213,35 +213,33 @@ has_engine_high_displacement(Car) :-
 % Prdicates that connect client properties with cars
 
 is_car_suitable_for_client_age(young, Car) :-
-       is_car_new(Car).
+       is_car_new(Car); is_car_has_mid_age(Car).
 
-is_car_suitable_for_client_age(mid, Car).
+is_car_suitable_for_client_age(mid, Car) :-
+       is_car_has_mid_age(Car).
 
 is_car_suitable_for_client_age(old, Car) :-
-	is_car_old(Car).
+	is_car_old(Car); is_car_has_mid_age(Car).
 
 is_car_suitable_for_client_money(poor, Car) :-
 	is_car_cheap(Car).
 
-is_car_suitable_for_client_money(mid, Car) :-
-	is_car_cheap(Car).
-
-is_car_suitable_for_client_money(mid, Car) :-
-	is_car_medium_prices(Car).
+is_car_suitable_for_client_money(average, Car) :-
+	is_car_cheap(Car); is_car_medium_prices(Car).
 
 is_car_suitable_for_client_money(rich, Car) :-
-	is_car_expensive(Car).
+	is_car_expensive(Car); is_car_medium_prices(Car).
 
 is_car_suitable_for_client_family(single, Car).
 
-is_car_suitable_for_client_family(family_guy, Car) :-
+is_car_suitable_for_client_family(married, Car) :-
 	has_seats(Car, X),
 	X >= 2.
 
 is_car_suitable_for_client_location(smallcity, Car) :-
 	is_car_cheap(Car).
 
-is_car_suitable_for_client_location(smallCity, Car) :-
+is_car_suitable_for_client_location(smallcity, Car) :-
 	is_car_medium_prices(Car).
 
 is_car_suitable_for_client_location(bigcity, Car) :-
@@ -251,13 +249,13 @@ is_car_suitable_for_client_location(bigcity, Car) :-
 	is_car_expensive(Car).
 
 is_car_suitable_for_client_location(village, Car) :-
-	is_type(Car, minibus).
+	is_type(Car, minibus); is_type(Car, hatchback); is_type(Car, van).
 
-is_car_suitable_for_client_location(village, Car) :-
-	is_type(Car, sedan).
+is_car_suitable_for_client_location(smallcity, Car) :-
+	is_type(Car, sedan); is_type(Car, hatchback); is_type(Car, coupe).
 
-is_car_suitable_for_client_location(village, Car) :-
-	is_type(Car, suv).
+is_car_suitable_for_client_location(bigcity, Car) :-
+	is_type(Car, suv); is_type(Car, hatchback); is_type(Car, pickup).
 
 is_car_suitable_for_client_likesfastcars(dontcare, Car).
 

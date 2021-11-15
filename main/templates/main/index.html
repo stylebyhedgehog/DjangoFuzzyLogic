@@ -1,95 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {% load static %}
     <meta charset="UTF-8">
     <title>Main</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous"></head>
-    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous"><link type="text/css" rel="stylesheet" href="css/style.css"/>
+</head>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 <body>
-<form method="post" action="res">
-    {% csrf_token %}
+	<video autoplay muted loop id="myVideo">
+	  <source src="{% static 'chu.mp4' %}" type="video/mp4">
+	</video>
+  <form method="post" action="res" class="flex">
+      {% csrf_token %}
 
-    <div class="choice">
+	<h1>Выбери свой автомобиль</h1>
+	<div class="container">
+
+    <div class="row" id="four" >
+        <h3>Ваш возраст</h3>
         <div class="form-check form-switch">
-          <input class="form-check-input" type="checkbox" role="switch" id="f1"
-             name="age" value="young">
+          <input class="form-check-input" type="radio" role="switch" id="f1"
+             name="age" value="young" >
           <label class="form-check-label" for="f1">Молодой</label>
         </div>
         <div class="form-check form-switch">
-          <input class="form-check-input" type="checkbox" role="switch" id="f2"
+          <input class="form-check-input" type="radio" role="switch" id="f2"
             name="age" value="mid">
-          <label class="form-check-label" for="f2">Средний</label>
+          <label class="form-check-label" for="f2">Взрослый</label>
         </div>
         <div class="form-check form-switch">
-          <input class="form-check-input" type="checkbox" role="switch" id="f3"
+          <input class="form-check-input" type="radio" role="switch" id="f3"
             name="age" value="old">
-          <label class="form-check-label" for="f3">Средний</label>
+          <label class="form-check-label" for="f3">Старый</label>
         </div>
     </div>
 
-    <div class="choice">
+    <div class="row" id="four">
+        <h3>Ваше благосостояние</h3>
         <div class="form-check form-switch">
-          <input class="form-check-input" type="checkbox" role="switch" id="f1"
+          <input class="form-check-input" type="radio" role="switch" id="f1"
              name="money" value="poor">
-          <label class="form-check-label" for="f1">Бедный</label>
+          <label class="form-check-label" for="f1">Денег немного</label>
         </div>
         <div class="form-check form-switch">
-          <input class="form-check-input" type="checkbox" role="switch" id="f2"
+          <input class="form-check-input" type="radio" role="switch" id="f2"
             name="money" value="average">
-          <label class="form-check-label" for="f2">Средний</label>
+          <label class="form-check-label" for="f2">Деньги есть</label>
         </div>
         <div class="form-check form-switch">
-          <input class="form-check-input" type="checkbox" role="switch" id="f3"
+          <input class="form-check-input" type="radio" role="switch" id="f3"
             name="money" value="rich">
-          <label class="form-check-label" for="f3">Богатый</label>
+          <label class="form-check-label" for="f3">Денег куча</label>
         </div>
     </div>
 
-    <div class="choice">
+    <div class="row" id="four">
+      <h3>Ваше семейное положение</h3>
         <div class="form-check form-switch">
-          <input class="form-check-input" type="checkbox" role="switch" id="f1"
+          <input class="form-check-input" type="radio" role="switch" id="f1"
              name="family" value="single">
-          <label class="form-check-label" for="f1">Соло</label>
+          <label class="form-check-label" for="f1">Холост</label>
         </div>
         <div class="form-check form-switch">
-          <input class="form-check-input" type="checkbox" role="switch" id="f2"
+          <input class="form-check-input" type="radio" role="switch" id="f2"
             name="family" value="married">
-          <label class="form-check-label" for="f2">Семья</label>
+          <label class="form-check-label" for="f2">Семейный</label>
         </div>
     </div>
 
-    <div class="choice">
+    <div class="row" id="four">
+      <h3>Ваше местоположение</h3>
         <div class="form-check form-switch">
-          <input class="form-check-input" type="checkbox" role="switch" id="f1"
+          <input class="form-check-input" type="radio" role="switch" id="f1"
              name="location" value="smallcity">
-          <label class="form-check-label" for="f1">Мал город</label>
+          <label class="form-check-label" for="f1">Небольшой город</label>
         </div>
         <div class="form-check form-switch">
-          <input class="form-check-input" type="checkbox" role="switch" id="f2"
+          <input class="form-check-input" type="radio" role="switch" id="f2"
             name="location" value="bigcity">
-          <label class="form-check-label" for="f2">Биг город</label>
+          <label class="form-check-label" for="f2">Большой город</label>
         </div>
         <div class="form-check form-switch">
-          <input class="form-check-input" type="checkbox" role="switch" id="f3"
+          <input class="form-check-input" type="radio" role="switch" id="f3"
             name="location" value="village">
-          <label class="form-check-label" for="f3">Село</label>
+          <label class="form-check-label" for="f3">Деревня</label>
         </div>
     </div>
 
-    <div class="choice">
+    <div class="row" id="four">
+      <h3>Нужна ли вам спортивная машина?</h3>
         <div class="form-check form-switch">
-          <input class="form-check-input" type="checkbox" role="switch" id="f1"
+          <input class="form-check-input" type="radio" role="switch" id="f1"
              name="fastcar" value="dontcare">
-          <label class="form-check-label" for="f1">Похую</label>
+          <label class="form-check-label" for="f1">Не имеет значения</label>
         </div>
         <div class="form-check form-switch">
-          <input class="form-check-input" type="checkbox" role="switch" id="f2"
+          <input class="form-check-input" type="radio" role="switch" id="f2"
             name="fastcar" value="yes">
           <label class="form-check-label" for="f2">Да</label>
         </div>
     </div>
 
-    <button type="submit" class="btn btn-outline-light" style="background-color: antiquewhite; color:black"> Результат</button>
+    <button type="submit" class="btn btn-outline-light" id="resBtn"> Результат</button>
+
+	</div>
 </form>
 </body>
 </html>

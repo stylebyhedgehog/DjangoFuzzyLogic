@@ -30,7 +30,6 @@ class Searcher:
             car_name = r["Car"]
             image = 'images/'+ r["Car"]+".jpg"
             total.update({car_name: image})
-
         return total
 
 

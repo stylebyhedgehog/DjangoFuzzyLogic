@@ -1,0 +1,53 @@
+#four {
+  padding: 20px;
+}
+
+#resBtn {
+    margin-top: 30px;
+	display: block;
+    margin-left: auto;
+    margin-right: auto;	
+}
+
+body {
+  margin: 5px 45px 15px 45px;
+  padding: 15px;
+    color: white;
+}
+
+
+#myVideo {
+  opacity: 0.9;
+  object-fit: cover;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1000;
+}
+
+.flex {
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 10px;
+  margin: 10px;
+  padding: 15px;
+}
+
+h1{
+	text-align:center;
+}
+
+.zuzu {
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+}
+
+.zuzu img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
