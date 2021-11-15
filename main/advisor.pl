@@ -1,6 +1,5 @@
 :- module(advisor, []).
 
-% Database of Cars
 
 has_cost(fiat_125p,2000).
 has_cost(fiat_126p,1200).
@@ -152,7 +151,6 @@ is_type(tarpan_honker,pickup).
 has_name(fiat_125p,"Maluch (fiat 125p)").
 
 % End of Car Database
-
 % Predicates about different car properties
 
 is_car_cheap(Car) :-
@@ -208,10 +206,6 @@ has_engine_high_displacement(Car) :-
 	X > 4000.
 
 
-% End of predicates about different car properties
-
-% Prdicates that connect client properties with cars
-
 is_car_suitable_for_client_age(young, Car) :-
        is_car_new(Car); is_car_has_mid_age(Car).
 
@@ -262,16 +256,7 @@ is_car_suitable_for_client_likesfastcars(dontcare, Car).
 is_car_suitable_for_client_likesfastcars(yes, Car) :-
 	is_car_fast(Car).
 
-% End of predicates that connects client props with cars
 
-
-% Main method for finding appropriate Car for Client
-% Client is tuple of:
-% Age -> young, mid, old
-% Money -> poor, mid, rich
-% Family -> single, family_guy
-% Location -> smallcity, bigcity, village.
-% LikesFastCars -> dontcare, yes
 is_suitable_car(client(Age, Money, Family, Location, LikesFastCars), Car) :-
 	is_car_suitable_for_client_age(Age, Car),
 	is_car_suitable_for_client_money(Money, Car),
