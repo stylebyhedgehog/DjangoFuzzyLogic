@@ -263,3 +263,5 @@ is_suitable_car(client(Age, Money, Family, Location, LikesFastCars), Car) :-
 	is_car_suitable_for_client_family(Family, Car),
 	is_car_suitable_for_client_location(Location, Car),
 	is_car_suitable_for_client_likesfastcars(LikesFastCars, Car).
+
+

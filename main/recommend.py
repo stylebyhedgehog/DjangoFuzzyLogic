@@ -3,7 +3,7 @@ import os
 from pyswip import Prolog
 
 
-class Searcher:
+class Recommender:
     def __init__(self, inp_age, inp_money, inp_family, inp_location, inp_likesfastcars):
         self.inp_age = inp_age
         self.inp_money = inp_money
